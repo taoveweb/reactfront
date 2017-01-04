@@ -1,0 +1,42 @@
+@charset "utf-8";
+$baseFontSize: 75;
+@function pxTorem($px) {
+  @return $px / $baseFontSize * 1rem;
+}
+
+@mixin font-dpr($font-size) {
+  font-size: $font-size;
+
+  [data-dpr="2"] & {
+    font-size: $font-size * 2;
+  }
+
+  [data-dpr="3"] & {
+    font-size: $font-size * 3;
+  }
+}
+html,body{
+  height:100%;
+}
+#app{
+  width:100%;
+  height:100%;
+}
+.loading img{
+  width:pxTorem(200);
+  display: block;
+}
+.loading{
+  display: flex;
+  width: 100%;
+  height:100%;
+  position: fixed;
+  z-index:1000;
+  justify-content: center;
+  align-items: center;
+  left:0;
+  top:0;
+  @include font-dpr(18px);
+  flex-direction: column;
+  color: #ffdaf1;
+}
